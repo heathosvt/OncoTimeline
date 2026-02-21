@@ -1,0 +1,45 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.exe
+*.pdb
+*.log
+
+# Entity Framework
+Migrations/
+
+# Visual Studio
+.vs/
+*.csproj.user
+
+# Rider
+.idea/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# React/Vite
+dist/
+.vite/
+*.local
+
+# Environment
+.env
+.env.local
+.env.production
+appsettings.Development.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database
+*.db
+*.sqlite
