@@ -13,20 +13,26 @@
     </p>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-        <a asp-page="/Timeline" class="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <div class="text-4xl mb-4">📊</div>
+        <a asp-page="/Timeline" class="block p-6 bg-white rounded-lg shadow card-hover">
+            <div class="flex justify-center mb-4">
+                <i data-lucide="calendar" class="w-12 h-12 text-blue-600"></i>
+            </div>
             <h2 class="text-2xl font-bold text-gray-900 mb-2">Premium Timeline</h2>
             <p class="text-gray-600">Track daily treatment events with beautiful visualization</p>
         </a>
         
-        <a asp-page="/Knowledge/Index" class="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <div class="text-4xl mb-4">📚</div>
+        <a asp-page="/Knowledge" class="block p-6 bg-white rounded-lg shadow card-hover">
+            <div class="flex justify-center mb-4">
+                <i data-lucide="book-open" class="w-12 h-12 text-blue-600"></i>
+            </div>
             <h2 class="text-2xl font-bold text-gray-900 mb-2">Knowledge Hub</h2>
             <p class="text-gray-600">Comprehensive B-ALL education for all audiences</p>
         </a>
         
-        <a asp-page="/Drugs/Index" class="block p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
-            <div class="text-4xl mb-4">💊</div>
+        <a asp-page="/Drugs" class="block p-6 bg-white rounded-lg shadow card-hover">
+            <div class="flex justify-center mb-4">
+                <i data-lucide="pill" class="w-12 h-12 text-blue-600"></i>
+            </div>
             <h2 class="text-2xl font-bold text-gray-900 mb-2">Drug Database</h2>
             <p class="text-gray-600">Detailed information on chemotherapy drugs</p>
         </a>

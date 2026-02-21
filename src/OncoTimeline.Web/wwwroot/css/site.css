@@ -16,9 +16,28 @@ body {
 .phase-consolidation { background-color: var(--phase-consolidation); }
 .phase-maintenance { background-color: var(--phase-maintenance); }
 
+/* Timeline Styles */
+.timeline-container {
+    position: relative;
+    min-height: 600px;
+    background: linear-gradient(to right, #f9fafb 0%, #ffffff 100%);
+}
+
+.phase-bar {
+    height: 60px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .event-marker {
-    width: 48px;
-    height: 48px;
+    position: absolute;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -32,4 +51,35 @@ body {
 .event-marker:hover {
     transform: scale(1.2);
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* Modal Animations */
+.modal-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Card Hover Effects */
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }

@@ -16,13 +16,16 @@
                         <a asp-page="/Index" class="text-2xl font-bold text-blue-600">OncoTimeline</a>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a asp-page="/Timeline" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a asp-page="/Timeline" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium gap-2">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
                             Timeline
                         </a>
-                        <a asp-page="/Knowledge/Index" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a asp-page="/Knowledge" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium gap-2">
+                            <i data-lucide="book-open" class="w-4 h-4"></i>
                             Knowledge Hub
                         </a>
-                        <a asp-page="/Drugs/Index" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a asp-page="/Drugs" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium gap-2">
+                            <i data-lucide="pill" class="w-4 h-4"></i>
                             Drugs
                         </a>
                     </div>
@@ -44,6 +47,12 @@
     </footer>
 
     @await RenderSectionAsync("Scripts", required: false)
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </body>
 </html>
