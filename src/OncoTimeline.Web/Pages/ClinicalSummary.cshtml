@@ -1,0 +1,238 @@
+@page
+@{
+    ViewData["Title"] = "Clinical Summary";
+}
+
+<div class="max-w-5xl mx-auto px-4 py-8">
+    
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 mb-8 shadow-lg">
+        <h1 class="text-4xl font-bold mb-4">Clinical Summary</h1>
+        <p class="text-xl mb-2">Atypical CNS-Predominant Pediatric B-Cell Acute Lymphoblastic Leukemia (B-ALL)</p>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 text-sm">
+            <div><strong>Patient:</strong> Nearly 3 years old</div>
+            <div><strong>Diagnosis:</strong> B-ALL</div>
+            <div><strong>Risk:</strong> High Risk</div>
+            <div><strong>Current Phase:</strong> Induction (Week 3)</div>
+            <div><strong>Diagnosis Date:</strong> February 2025</div>
+            <div><strong>Protocol:</strong> High-Risk B-ALL</div>
+        </div>
+    </div>
+
+    <!-- Patient Overview -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Patient Overview</h2>
+        <div class="space-y-2">
+            <p><strong>Baseline Health:</strong></p>
+            <ul class="list-disc list-inside ml-4 text-gray-700">
+                <li>Excellent health prior to diagnosis</li>
+                <li>Normal development milestones</li>
+                <li>Highly active and physically strong</li>
+                <li>No chronic medical conditions</li>
+                <li>Normal vaccination history</li>
+                <li><strong>Family History:</strong> Maternal grandfather had childhood leukemia</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Highly Atypical Presentation -->
+    <div class="bg-amber-50 border-l-4 border-amber-500 rounded-lg p-6 mb-6">
+        <h2 class="text-2xl font-bold text-amber-900 mb-4">⚠️ Highly Atypical Presentation</h2>
+        <ul class="list-disc list-inside space-y-2 text-amber-900">
+            <li><strong>CNS-predominant disease</strong> (extremely rare)</li>
+            <li>Minimal bone marrow involvement at diagnosis</li>
+            <li>Represents &lt;1% of pediatric ALL cases</li>
+        </ul>
+    </div>
+
+    <!-- Disease Distribution -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Disease Distribution at Diagnosis</h2>
+        
+        <div class="space-y-4">
+            <div class="border-l-4 border-red-500 pl-4">
+                <h3 class="text-lg font-semibold text-gray-900">1. Central Nervous System (Primary Site)</h3>
+                <ul class="list-disc list-inside ml-4 text-gray-700">
+                    <li>Significant leukemic blast population in CSF</li>
+                    <li>CNS was the dominant disease compartment</li>
+                    <li>Extremely uncommon presentation</li>
+                </ul>
+            </div>
+            
+            <div class="border-l-4 border-yellow-500 pl-4">
+                <h3 class="text-lg font-semibold text-gray-900">2. Peripheral Blood</h3>
+                <ul class="list-disc list-inside ml-4 text-gray-700">
+                    <li>Minimal leukemic involvement initially detected</li>
+                    <li>Blood counts did not show typical leukemic burden</li>
+                </ul>
+            </div>
+            
+            <div class="border-l-4 border-green-500 pl-4">
+                <h3 class="text-lg font-semibold text-gray-900">3. Bone Marrow</h3>
+                <ul class="list-disc list-inside ml-4 text-gray-700">
+                    <li><strong>Bone marrow biopsy:</strong> No detectable leukemic blasts</li>
+                    <li><strong>PET scan (6 days post-treatment):</strong> No evidence of marrow disease</li>
+                    <li>Most unusual aspect: classic ALL typically shows heavy marrow infiltration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Treatment Response -->
+    <div class="bg-green-50 border-l-4 border-green-500 rounded-lg p-6 mb-6">
+        <h2 class="text-2xl font-bold text-green-900 mb-4">✅ Early Treatment Response (Week 3)</h2>
+        
+        <h3 class="text-xl font-semibold text-green-900 mb-3">CSF Disease Response — EXCELLENT</h3>
+        <div class="overflow-x-auto mb-4">
+            <table class="min-w-full bg-white rounded-lg overflow-hidden">
+                <thead class="bg-green-600 text-white">
+                    <tr>
+                        <th class="px-4 py-2 text-left">Date</th>
+                        <th class="px-4 py-2 text-left">CSF Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b"><td class="px-4 py-2">Feb 6</td><td class="px-4 py-2">No definite blasts</td></tr>
+                    <tr class="border-b"><td class="px-4 py-2">Feb 7</td><td class="px-4 py-2">No definite blasts</td></tr>
+                    <tr class="border-b"><td class="px-4 py-2">Feb 10</td><td class="px-4 py-2">Negative for blasts</td></tr>
+                    <tr class="border-b"><td class="px-4 py-2">Feb 13</td><td class="px-4 py-2">Negative for blasts</td></tr>
+                    <tr><td class="px-4 py-2">Feb 17</td><td class="px-4 py-2">No blasts; only reactive lymphocyte</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="text-green-900 font-semibold">➡️ Rapid CNS remission achieved within first weeks of therapy</p>
+    </div>
+
+    <!-- Neurologic Recovery -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Neurologic and Functional Recovery</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Early Hospital Course (Week 1)</h3>
+                <p class="text-sm text-gray-600 mb-2">Post-ICU temporary regression:</p>
+                <ul class="list-disc list-inside ml-4 text-gray-700 text-sm">
+                    <li>Decreased speech output</li>
+                    <li>Inability to walk</li>
+                    <li>Generalized slowing</li>
+                </ul>
+                <p class="text-sm text-gray-600 mt-2"><strong>Preserved:</strong> Social interaction, recognition, emotions</p>
+            </div>
+            
+            <div class="bg-green-50 p-4 rounded-lg">
+                <h3 class="text-lg font-semibold text-green-900 mb-2">✅ Current Status (Week 3)</h3>
+                <ul class="list-disc list-inside space-y-1 text-green-900 text-sm">
+                    <li>Returned to near baseline weight</li>
+                    <li>Walking almost normally</li>
+                    <li>Normal activity level</li>
+                    <li>Eating normally</li>
+                    <li>Normal cognition</li>
+                    <li>⚠️ Voice intermittently weak (vincristine effect - temporary)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Unusual -->
+    <div class="bg-purple-50 border-l-4 border-purple-500 rounded-lg p-6 mb-6">
+        <h2 class="text-2xl font-bold text-purple-900 mb-4">Why This Case is Clinically Unusual</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <h3 class="font-semibold text-purple-900 mb-2">Typical B-ALL:</h3>
+                <ol class="list-decimal list-inside space-y-1 text-purple-900">
+                    <li>Bone marrow origin</li>
+                    <li>High marrow blast burden</li>
+                    <li>Spillover into blood</li>
+                    <li>Secondary CNS involvement</li>
+                </ol>
+            </div>
+            <div>
+                <h3 class="font-semibold text-purple-900 mb-2">This Case:</h3>
+                <ol class="list-decimal list-inside space-y-1 text-purple-900">
+                    <li><strong>CNS disease dominant</strong></li>
+                    <li><strong>Minimal blood involvement</strong></li>
+                    <li><strong>No detectable marrow disease</strong></li>
+                    <li><strong>Extremely rapid CSF clearance</strong></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Treatment Phases -->
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">High-Risk Treatment Protocol Phases</h2>
+        
+        <div class="space-y-3">
+            <div class="bg-red-100 border-l-4 border-red-500 p-4 rounded">
+                <h3 class="font-bold text-red-900">Current: Induction (Weeks 1-4)</h3>
+                <p class="text-sm text-red-800">Goal: Achieve remission | Status: Week 3 - Excellent response ✅</p>
+            </div>
+            
+            <div class="bg-orange-100 border-l-4 border-orange-500 p-4 rounded">
+                <h3 class="font-bold text-orange-900">Consolidation (Weeks 5-8)</h3>
+                <p class="text-sm text-orange-800">Intensified chemotherapy to prevent resistant cells</p>
+            </div>
+            
+            <div class="bg-purple-100 border-l-4 border-purple-500 p-4 rounded">
+                <h3 class="font-bold text-purple-900">Blinatumomab #1 (4 weeks)</h3>
+                <p class="text-sm text-purple-800">Immunotherapy - continuous IV infusion - hospital admission required</p>
+            </div>
+            
+            <div class="bg-cyan-100 border-l-4 border-cyan-500 p-4 rounded">
+                <h3 class="font-bold text-cyan-900">Interim Maintenance 1 (8 weeks)</h3>
+                <p class="text-sm text-cyan-800">Lower-intensity chemotherapy - recovery period</p>
+            </div>
+            
+            <div class="bg-purple-100 border-l-4 border-purple-500 p-4 rounded">
+                <h3 class="font-bold text-purple-900">Blinatumomab #2 (4 weeks)</h3>
+                <p class="text-sm text-purple-800">Second immunotherapy cycle</p>
+            </div>
+            
+            <div class="bg-red-100 border-l-4 border-red-600 p-4 rounded">
+                <h3 class="font-bold text-red-900">Delayed Intensification (8 weeks)</h3>
+                <p class="text-sm text-red-800">High-intensity chemotherapy similar to induction</p>
+            </div>
+            
+            <div class="bg-cyan-100 border-l-4 border-cyan-500 p-4 rounded">
+                <h3 class="font-bold text-cyan-900">Interim Maintenance 2 (8 weeks)</h3>
+                <p class="text-sm text-cyan-800">Second recovery period</p>
+            </div>
+            
+            <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded">
+                <h3 class="font-bold text-green-900">Maintenance (2+ years)</h3>
+                <p class="text-sm text-green-800">Daily oral chemotherapy at home - monthly clinic visits - longest phase</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Flexibility -->
+    <div class="bg-amber-50 border-l-4 border-amber-500 rounded-lg p-6 mb-6">
+        <h2 class="text-xl font-bold text-amber-900 mb-3">⚠️ Schedule Flexibility Note</h2>
+        <p class="text-amber-900 mb-2">Treatment schedules are adjusted based on:</p>
+        <ul class="list-disc list-inside ml-4 text-amber-900">
+            <li>Blood count recovery</li>
+            <li>Infection complications</li>
+            <li>Organ function (liver, kidneys, heart)</li>
+            <li>Side effect severity</li>
+            <li>MRD results</li>
+        </ul>
+        <p class="text-amber-900 font-semibold mt-3">After Induction: Schedule changes are common and expected. Delays for count recovery or infections are normal and do not affect long-term outcomes.</p>
+    </div>
+
+    <!-- Encouraging Factors -->
+    <div class="bg-green-50 border-l-4 border-green-500 rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-green-900 mb-4">✅ Encouraging Factors</h2>
+        <ul class="list-disc list-inside space-y-2 text-green-900">
+            <li>Rapid CSF blast clearance</li>
+            <li>No detectable systemic disease</li>
+            <li>Strong platelet recovery</li>
+            <li>Rapid neurologic recovery</li>
+            <li>Good treatment tolerance</li>
+        </ul>
+        <p class="text-green-900 font-semibold mt-4">Overall: Encouraging early response with excellent recovery trajectory.</p>
+    </div>
+
+    <p class="text-center text-gray-500 text-sm mt-8">Last Updated: Week 3 of Induction</p>
+
+</div>

@@ -14,6 +14,11 @@ public record DrugDetailDto(
     string DurationOfEffects,
     string ExpectedLabChanges,
     string NeurologicalImpacts,
+    string TypicalTimeline,
+    string MonitoringReason,
+    string CommonButNotDangerous,
+    string BloodCountPattern,
+    bool IsCurrentlyRelevant,
     List<SideEffectDto> SideEffects
 );
 

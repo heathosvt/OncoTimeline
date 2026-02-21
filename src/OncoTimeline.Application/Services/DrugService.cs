@@ -70,6 +70,11 @@ public class DrugService
             d.DurationOfEffects,
             d.ExpectedLabChanges,
             d.NeurologicalImpacts,
+            d.TypicalTimeline,
+            d.MonitoringReason,
+            d.CommonButNotDangerous,
+            d.BloodCountPattern,
+            d.IsCurrentlyRelevant,
             d.SideEffects.Select(se => new SideEffectDto(
                 se.Id,
                 se.EffectName,

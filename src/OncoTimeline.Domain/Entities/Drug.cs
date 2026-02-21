@@ -15,6 +15,14 @@ public class Drug
     public string DurationOfEffects { get; set; } = string.Empty;
     public string ExpectedLabChanges { get; set; } = string.Empty;
     public string NeurologicalImpacts { get; set; } = string.Empty;
+    
+    // New fields for enhanced clinical tracking
+    public string TypicalTimeline { get; set; } = string.Empty; // Day-by-day timeline
+    public string MonitoringReason { get; set; } = string.Empty; // Why doctors monitor closely
+    public string CommonButNotDangerous { get; set; } = string.Empty; // Expected, non-emergency symptoms
+    public string BloodCountPattern { get; set; } = string.Empty; // Expected blood count changes
+    public bool IsCurrentlyRelevant { get; set; } = false; // Active in current phase
+    
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     

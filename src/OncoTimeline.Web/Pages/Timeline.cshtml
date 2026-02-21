@@ -4,124 +4,164 @@
     ViewData["Title"] = "Treatment Timeline";
 }
 
-<div class="min-h-screen">
-
-    <!-- Timeline Controls -->
-    <div class="bg-white shadow-sm p-4 mb-6 rounded-lg">
-        <div class="flex flex-wrap gap-4 items-center">
-            <!-- Zoom Controls -->
-            <div class="flex gap-2">
-                <span class="text-sm font-medium text-gray-700 mr-2">Zoom:</span>
-                <button @@click="zoom = 'day'" :class="zoom === 'day' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'" class="px-3 py-1 rounded text-sm font-medium">Day</button>
-                <button @@click="zoom = 'week'" :class="zoom === 'week' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'" class="px-3 py-1 rounded text-sm font-medium">Week</button>
-                <button @@click="zoom = 'month'" :class="zoom === 'month' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'" class="px-3 py-1 rounded text-sm font-medium">Month</button>
-                <button @@click="zoom = 'full'" :class="zoom === 'full' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'" class="px-3 py-1 rounded text-sm font-medium">Full</button>
-            </div>
-
-            <!-- Category Filter -->
-            <div class="flex gap-2 items-center">
-                <span class="text-sm font-medium text-gray-700">Filter:</span>
-                <select x-model="selectedCategory" class="border border-gray-300 rounded px-3 py-1 text-sm">
-                    <option value="all">All Events</option>
-                    <option value="Chemotherapy">Chemotherapy</option>
-                    <option value="Lab">Lab Work</option>
-                    <option value="Hospital">Hospital</option>
-                    <option value="Symptom">Symptoms</option>
-                    <option value="Note">Notes</option>
-                </select>
-            </div>
+<div class="min-h-screen bg-gray-50">
+    
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 mb-6">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl font-bold mb-2">Treatment Timeline</h1>
+            <p class="text-blue-100">High-Risk B-ALL Protocol | Currently in Induction (Week 3)</p>
         </div>
     </div>
 
-    <div class="mb-6">
-        <h3 class="text-lg font-semibold text-gray-900 mb-3">Treatment Phases</h3>
-        @if(Model.Phases.Any())
-        {
-            <div class="space-y-2">
-                @foreach(var phase in Model.Phases)
-                {
-                    <div class="phase-bar text-white font-semibold px-4 py-3 rounded-lg shadow" style="background-color: @phase.Color">
-                        <span>@phase.Name</span>
-                        <span class="text-sm opacity-90 ml-2">(@phase.StartDate.ToShortDateString() - @(phase.EndDate?.ToShortDateString() ?? "Ongoing"))</span>
-                    </div>
-                }
+    <div class="max-w-7xl mx-auto px-4">
+        
+        <!-- Timeline Controls -->
+        <div class="bg-white shadow-sm p-4 mb-6 rounded-lg">
+            <div class="flex flex-wrap gap-4 items-center">
+                <div class="flex gap-2 items-center">
+                    <span class="text-sm font-medium text-gray-700">Filter:</span>
+                    <select class="border border-gray-300 rounded px-3 py-1 text-sm">
+                        <option value="all">All Events</option>
+                        <option value="Chemotherapy">Chemotherapy</option>
+                        <option value="Lab">Lab Work</option>
+                        <option value="Hospital">Hospital</option>
+                        <option value="Note">Notes</option>
+                    </select>
+                </div>
+                <button class="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                    Add Event
+                </button>
             </div>
-        }
-        else
-        {
-            <p class="text-gray-500">No treatment phases defined</p>
-        }
-    </div>
+        </div>
 
-    <!-- Timeline Canvas -->
-    <div class="bg-white rounded-lg shadow-lg p-6 overflow-x-auto">
-        @if(Model.Events.Any())
-        {
-            <div class="relative" style="min-height: 300px;">
+        <!-- Timeline Visualization -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-6 overflow-x-auto">
+            <div style="min-width: 1400px;">
                 <!-- Timeline Line -->
-                <div class="absolute top-1/2 left-0 right-0 h-1 bg-gray-200" style="transform: translateY(-50%);"></div>
-                
-                <!-- Event Markers -->
-                @foreach(var (evt, index) in Model.Events.Select((e, i) => (e, i)))
-                {
-                    var leftPosition = (index * 250) + 50;
-                    <div class="absolute" style="left: @(leftPosition)px; top: 50%; transform: translateY(-50%);">
-                        <!-- Marker -->
-                        <div class="event-marker cursor-pointer" 
-                             onclick="document.getElementById('event-@evt.Id').style.display='block'">
-                            <span>@(evt.Category == "Chemotherapy" ? "💉" : evt.Category == "Hospital" ? "🏥" : evt.Category == "Lab" ? "🔬" : evt.Category == "Symptom" ? "😷" : "📝")</span>
-                        </div>
-                        <!-- Label -->
-                        <div class="text-center mt-16 w-32" style="margin-left: -40px;">
-                            <p class="text-xs font-semibold text-gray-900">@evt.Title</p>
-                            <p class="text-xs text-gray-500">@evt.EventDate.ToShortDateString()</p>
-                        </div>
-                    </div>
+                <div class="relative" style="height: 400px;">
+                    <!-- Horizontal Line -->
+                    <div class="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 via-purple-400 to-green-400" style="transform: translateY(-50%);"></div>
                     
-                    <!-- Event Modal -->
-                    <div id="event-@evt.Id" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden" 
-                         onclick="if(event.target === this) this.style.display='none'">
-                        <div class="flex items-center justify-center min-h-screen px-4">
-                            <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full p-6">
-                                <div class="flex justify-between items-start mb-4">
-                                    <h2 class="text-2xl font-bold text-gray-900">@evt.Title</h2>
-                                    <button onclick="document.getElementById('event-@evt.Id').style.display='none'" 
-                                            class="text-gray-400 hover:text-gray-600">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                        </svg>
-                                    </button>
+                    <!-- Events -->
+                    @{
+                        var totalDays = 21; // Week 3 of induction
+                        var pixelsPerDay = 60;
+                    }
+                    @foreach(var (evt, index) in Model.Events.Select((e, i) => (e, i)))
+                    {
+                        var daysSinceDiagnosis = (evt.EventDate - Model.Events.Min(e => e.EventDate)).Days;
+                        var leftPosition = daysSinceDiagnosis * pixelsPerDay;
+                        var topOffset = index % 2 == 0 ? -120 : 80;
+                        
+                        <div class="absolute" style="left: @(leftPosition)px; top: calc(50% + @(topOffset)px); transform: translateX(-50%);">
+                            <!-- Connector Line -->
+                            <div class="absolute left-1/2 bg-gray-300" style="width: 2px; height: @(Math.Abs(topOffset) - 20)px; @(topOffset < 0 ? "bottom: -" + (Math.Abs(topOffset) - 20) + "px" : "top: 40px");"></div>
+                            
+                            <!-- Event Card -->
+                            <div class="bg-white border-2 @(evt.Category == "Chemotherapy" ? "border-red-400" : evt.Category == "Lab" ? "border-blue-400" : evt.Category == "Hospital" ? "border-purple-400" : "border-green-400") rounded-lg shadow-lg p-4 cursor-pointer hover:shadow-xl transition w-64"
+                                 onclick="document.getElementById('modal-@evt.Id').style.display='flex'">
+                                <!-- Icon -->
+                                <div class="text-3xl mb-2 text-center">
+                                    @(evt.Category == "Chemotherapy" ? "💉" : evt.Category == "Hospital" ? "🏥" : evt.Category == "Lab" ? "🔬" : "📝")
                                 </div>
-                                <div class="space-y-4">
-                                    <div>
-                                        <span class="inline-block bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">@evt.Category</span>
-                                        <span class="text-gray-600 ml-2">@evt.EventDate.ToLongDateString()</span>
+                                <!-- Title -->
+                                <h3 class="font-bold text-gray-900 text-sm text-center mb-1">@evt.Title</h3>
+                                <!-- Date -->
+                                <p class="text-xs text-gray-600 text-center">@evt.EventDate.ToString("MMM d")</p>
+                                <!-- Category Badge -->
+                                <div class="mt-2 text-center">
+                                    <span class="text-xs px-2 py-1 rounded-full @(evt.Category == "Chemotherapy" ? "bg-red-100 text-red-800" : evt.Category == "Lab" ? "bg-blue-100 text-blue-800" : evt.Category == "Hospital" ? "bg-purple-100 text-purple-800" : "bg-green-100 text-green-800")">
+                                        @evt.Category
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Modal -->
+                            <div id="modal-@evt.Id" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4"
+                                 onclick="if(event.target === this) this.style.display='none'">
+                                <div class="bg-white rounded-lg max-w-2xl w-full p-6">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h2 class="text-2xl font-bold text-gray-900">@evt.Title</h2>
+                                        <button onclick="document.getElementById('modal-@evt.Id').style.display='none'" class="text-gray-400 hover:text-gray-600">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                            </svg>
+                                        </button>
                                     </div>
-                                    @if(!string.IsNullOrEmpty(evt.Notes))
-                                    {
+                                    <div class="space-y-4">
                                         <div>
-                                            <h3 class="font-semibold text-gray-900 mb-2">Notes:</h3>
-                                            <p class="text-gray-700">@evt.Notes</p>
+                                            <span class="inline-block px-3 py-1 rounded-full text-sm font-semibold @(evt.Category == "Chemotherapy" ? "bg-red-100 text-red-800" : evt.Category == "Lab" ? "bg-blue-100 text-blue-800" : evt.Category == "Hospital" ? "bg-purple-100 text-purple-800" : "bg-green-100 text-green-800")">
+                                                @evt.Category
+                                            </span>
+                                            <span class="text-gray-600 ml-2">@evt.EventDate.ToLongDateString()</span>
                                         </div>
-                                    }
+                                        @if(!string.IsNullOrEmpty(evt.Notes))
+                                        {
+                                            <div>
+                                                <h3 class="font-semibold text-gray-900 mb-2">Notes:</h3>
+                                                <p class="text-gray-700">@evt.Notes</p>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    
+                    <!-- Date Markers -->
+                    @for(var day = 0; day <= totalDays; day += 7)
+                    {
+                        var leftPos = day * pixelsPerDay;
+                        <div class="absolute top-1/2 text-xs text-gray-500 font-medium" style="left: @(leftPos)px; transform: translate(-50%, 30px);">
+                            Week @((day / 7) + 1)
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Treatment Phases Diagram -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Treatment Phases Roadmap</h2>
+            
+            <div class="space-y-3">
+                @foreach(var phase in Model.Phases.OrderBy(p => p.DisplayOrder))
+                {
+                    var isCurrentPhase = phase.Name == "Induction";
+                    <div class="relative">
+                        <div class="flex items-center gap-4">
+                            <!-- Phase Number -->
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white" style="background-color: @phase.Color">
+                                @phase.DisplayOrder
+                            </div>
+                            <!-- Phase Bar -->
+                            <div class="flex-1 rounded-lg p-4 @(isCurrentPhase ? "ring-4 ring-blue-400" : "")" style="background-color: @phase.Color; opacity: @(isCurrentPhase ? "1" : "0.7")">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h3 class="font-bold text-white text-lg">@phase.Name @(isCurrentPhase ? "← CURRENT" : "")</h3>
+                                        <p class="text-white text-sm opacity-90">@phase.Description</p>
+                                    </div>
+                                    <div class="text-white text-sm opacity-90">
+                                        @phase.StartDate.ToString("MMM d") - @(phase.EndDate?.ToString("MMM d") ?? "Ongoing")
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 }
             </div>
-        }
-        else
-        {
-            <div class="text-center py-12">
-                <p class="text-gray-500">No events to display</p>
+            
+            <!-- Schedule Flexibility Note -->
+            <div class="mt-6 p-4 bg-amber-50 border-l-4 border-amber-400 rounded">
+                <p class="text-sm text-amber-800">
+                    <strong>⚠️ Schedule Flexibility:</strong> Treatment schedules often change based on blood count recovery, infections, and side effects. 
+                    After Induction (current phase), delays are common and expected - they don't affect long-term outcomes. 
+                    Your care team will adjust timing as needed for your child's safety and recovery.
+                </p>
             </div>
-        }
+        </div>
+
     </div>
-
-    <!-- Quick Add Floating Button -->
-    <button class="fixed bottom-8 right-8 bg-blue-600 hover:bg-blue-700 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-200">
-        <i data-lucide="plus" class="w-8 h-8"></i>
-    </button>
-
 </div>

@@ -8,9 +8,19 @@
     <h1 class="text-4xl font-bold text-gray-900 mb-4">
         OncoTimeline
     </h1>
-    <p class="text-xl text-gray-600 mb-8">
-        Premium pediatric B-ALL leukemia companion app
+    <p class="text-xl text-gray-600 mb-2">
+        B-ALL Treatment Companion
     </p>
+    <p class="text-sm text-gray-500 mb-8">
+        High-Risk Protocol | Currently in Induction (Week 3)
+    </p>
+    
+    <div class="mb-8">
+        <a asp-page="/ClinicalSummary" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            <i data-lucide="file-text" class="w-5 h-5"></i>
+            View Clinical Summary
+        </a>
+    </div>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
         <a asp-page="/Timeline" class="block p-6 bg-white rounded-lg shadow card-hover">
