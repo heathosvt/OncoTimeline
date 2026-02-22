@@ -1,115 +1,723 @@
 @page
-@model KnowledgeModel
 @{
     ViewData["Title"] = "Knowledge Hub";
 }
 
-<div x-data='@Html.Raw(System.Text.Json.JsonSerializer.Serialize(new {
-    audience = "NonTechnical",
-    category = "All",
-    searchQuery = ""
-}))' class="max-w-7xl mx-auto px-4 py-8">
-
-    <!-- Header -->
-    <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">B-ALL Knowledge Hub</h1>
-        <p class="text-gray-600">Educational resources about B-ALL treatment, side effects, and recovery</p>
-        <p class="text-sm text-amber-600 mt-2">⚠️ AI-generated content for educational purposes only. Always consult your medical team.</p>
+<div class="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50">
+    
+    <!-- Hero Header with Current Phase Banner -->
+    <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-12">
+            <div class="text-center mb-8">
+                <h1 class="text-5xl font-black mb-4 tracking-tight">Knowledge Hub</h1>
+                <p class="text-2xl font-light text-blue-100">Your Treatment Decision & Expectation Framework</p>
+            </div>
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-6 border border-white border-opacity-20 shadow-xl">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">📍</span>
+                    <p class="font-bold text-xl">Based on Current Phase: Induction (Week 3)</p>
+                </div>
+                <p class="text-blue-100 mb-3 font-medium">You are likely to see this week:</p>
+                <div class="grid md:grid-cols-2 gap-3">
+                    <div class="bg-white bg-opacity-10 rounded-lg p-3 backdrop-blur">
+                        <p class="text-white">• Fatigue and low energy</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 rounded-lg p-3 backdrop-blur">
+                        <p class="text-white">• Blood counts approaching nadir</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 rounded-lg p-3 backdrop-blur">
+                        <p class="text-white">• Voice weakness from vincristine</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 rounded-lg p-3 backdrop-blur">
+                        <p class="text-white">• Gradual improvement in activity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Controls -->
-    <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
-        <!-- Audience Toggle -->
-        <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Content Level</label>
-            <div class="flex gap-2">
-                <button @@click="audience = 'NonTechnical'" 
-                    :class="audience === 'NonTechnical' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'"
-                    class="px-4 py-2 rounded-lg font-medium transition">
-                    Parent-Friendly
-                </button>
-                <button @@click="audience = 'Technical'" 
-                    :class="audience === 'Technical' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'"
-                    class="px-4 py-2 rounded-lg font-medium transition">
-                    Medical Detail
-                </button>
+    <div class="max-w-7xl mx-auto px-4 py-12">
+        
+        <!-- Quick Navigation Cards -->
+        <div class="grid md:grid-cols-4 gap-6 mb-12">
+            <a href="#urgent" class="group bg-gradient-to-br from-red-500 to-red-600 rounded-2xl p-6 hover:shadow-2xl hover:scale-105 transition-all duration-300 transform">
+                <div class="text-5xl mb-4">🚨</div>
+                <h3 class="font-black text-xl text-white mb-2">URGENT GUIDE</h3>
+                <p class="text-red-100 text-sm">When to call immediately</p>
+            </a>
+            <a href="#normal" class="group bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 hover:shadow-2xl hover:scale-105 transition-all duration-300 transform">
+                <div class="text-5xl mb-4">✅</div>
+                <h3 class="font-black text-xl text-white mb-2">Normal vs Not</h3>
+                <p class="text-green-100 text-sm">What's expected</p>
+            </a>
+            <a href="#phases" class="group bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-6 hover:shadow-2xl hover:scale-105 transition-all duration-300 transform">
+                <div class="text-5xl mb-4">🧬</div>
+                <h3 class="font-black text-xl text-white mb-2">Phase Guide</h3>
+                <p class="text-blue-100 text-sm">What each phase looks like</p>
+            </a>
+            <a href="#symptoms" class="group bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 hover:shadow-2xl hover:scale-105 transition-all duration-300 transform">
+                <div class="text-5xl mb-4">🔍</div>
+                <h3 class="font-black text-xl text-white mb-2">Symptom Decoder</h3>
+                <p class="text-purple-100 text-sm">Understand what you see</p>
+            </a>
+        </div>
+
+    <!-- 1. URGENT GUIDE -->
+    <div id="urgent" class="bg-gradient-to-br from-red-50 to-red-100 rounded-3xl p-10 mb-12 shadow-2xl border-2 border-red-200">
+        <div class="flex items-center gap-4 mb-8">
+            <div class="bg-red-600 rounded-2xl p-4 shadow-lg">
+                <span class="text-5xl">🚨</span>
+            </div>
+            <h2 class="text-4xl font-black text-red-900">When To Call The Oncology Team IMMEDIATELY</h2>
+        </div>
+        
+        <div class="space-y-4">
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-shadow">
+                <h3 class="text-2xl font-bold text-red-900 mb-3 flex items-center gap-2">
+                    <span>🌡️</span> Fever ≥ 100.4°F (38°C) → CALL IMMEDIATELY
+                </h3>
+                <p class="text-gray-800 mb-3 text-lg"><strong>Why:</strong> Fever during chemotherapy is treated as infection until proven otherwise because immune defenses are temporarily low.</p>
+                <div class="bg-gradient-to-r from-red-100 to-red-50 p-5 rounded-xl mt-3 border border-red-200">
+                    <p class="font-bold text-red-900 text-lg mb-3">Temperature Guide:</p>
+                    <div class="space-y-2">
+                        <div class="bg-white p-3 rounded-lg">
+                            <p class="text-gray-800">• <strong>99–100.3°F</strong> → monitor closely</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg">
+                            <p class="text-red-700 font-bold">• <strong>≥100.4°F once</strong> → call oncology NOW</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg">
+                            <p class="text-red-900 font-bold">• <strong>≥101°F</strong> → urgent evaluation</p>
+                        </div>
+                    </div>
+                    <div class="bg-red-600 text-white p-4 rounded-lg mt-4 font-bold text-lg">
+                        ⚠️ Do NOT give Tylenol before calling (can hide fever)
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-shadow">
+                <h3 class="text-2xl font-bold text-red-900 mb-2 flex items-center gap-2">
+                    <span>🤢</span> Repeated Vomiting → CALL
+                </h3>
+                <p class="text-gray-800 text-lg">Cannot keep fluids down for 4+ hours or vomiting blood</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-shadow">
+                <h3 class="text-2xl font-bold text-red-900 mb-2 flex items-center gap-2">
+                    <span>😴</span> Hard to Wake / Extreme Lethargy → CALL
+                </h3>
+                <p class="text-gray-800 text-lg">More than usual tiredness - difficult to rouse or unresponsive</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-shadow">
+                <h3 class="text-2xl font-bold text-red-900 mb-2 flex items-center gap-2">
+                    <span>🫁</span> Breathing Difficulty → GO TO ER
+                </h3>
+                <p class="text-gray-800 text-lg">Fast breathing, struggling to breathe, blue lips</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-shadow">
+                <h3 class="text-2xl font-bold text-red-900 mb-2 flex items-center gap-2">
+                    <span>🩸</span> Uncontrolled Bleeding → CALL
+                </h3>
+                <p class="text-gray-800 text-lg">Bleeding that won't stop with pressure, blood in vomit/stool</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-shadow">
+                <h3 class="text-2xl font-bold text-red-900 mb-2 flex items-center gap-2">
+                    <span>🤕</span> Severe Abdominal Pain → CALL
+                </h3>
+                <p class="text-gray-800 text-lg">Could indicate pancreatitis (asparaginase side effect)</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-shadow">
+                <h3 class="text-2xl font-bold text-red-900 mb-2 flex items-center gap-2">
+                    <span>🧠</span> Confusion / Seizure Activity → CALL/ER
+                </h3>
+                <p class="text-gray-800 text-lg">New confusion, seizures, severe headache</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. NORMAL VS NOT NORMAL -->
+    <div id="normal" class="bg-white rounded-3xl shadow-2xl p-10 mb-12 border border-gray-200">
+        <div class="flex items-center gap-4 mb-8">
+            <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-4 shadow-lg">
+                <span class="text-5xl">✅</span>
+            </div>
+            <h2 class="text-4xl font-black text-gray-900">What Is NORMAL vs NOT NORMAL</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Expected -->
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl border-2 border-green-300 shadow-lg hover:shadow-xl transition-all">
+                <h3 class="text-2xl font-black text-green-900 mb-6 flex items-center gap-2">
+                    <span>✅</span> Expected During Treatment
+                </h3>
+                <ul class="space-y-3 text-green-900">
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Sudden fatigue after chemo</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Appetite swings</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Mood changes from steroids</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Temporary regression</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Pale appearance</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Voice weakness (vincristine)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Hair loss</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Blood counts dropping weeks 2–3</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Red/orange urine (daunorubicin)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Constipation</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-green-600 font-bold">•</span>
+                        <span>Jaw pain (vincristine)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Needs Monitoring -->
+            <div class="bg-gradient-to-br from-yellow-50 to-amber-50 p-8 rounded-2xl border-2 border-yellow-300 shadow-lg hover:shadow-xl transition-all">
+                <h3 class="text-2xl font-black text-yellow-900 mb-6 flex items-center gap-2">
+                    <span>⚠️</span> Needs Monitoring
+                </h3>
+                <ul class="space-y-3 text-yellow-900">
+                    <li class="flex items-start gap-2">
+                        <span class="text-yellow-600 font-bold">•</span>
+                        <span>Persistent vomiting</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-yellow-600 font-bold">•</span>
+                        <span>Refusal to drink</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-yellow-600 font-bold">•</span>
+                        <span>Worsening weakness</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-yellow-600 font-bold">•</span>
+                        <span>New limp</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-yellow-600 font-bold">•</span>
+                        <span>Mouth sores</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-yellow-600 font-bold">•</span>
+                        <span>Diarrhea lasting >24h</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-yellow-600 font-bold">•</span>
+                        <span>Increased bruising</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-yellow-600 font-bold">•</span>
+                        <span>Persistent headache</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Not Normal -->
+            <div class="bg-gradient-to-br from-red-50 to-rose-50 p-8 rounded-2xl border-2 border-red-300 shadow-lg hover:shadow-xl transition-all">
+                <h3 class="text-2xl font-black text-red-900 mb-6 flex items-center gap-2">
+                    <span>🚨</span> Not Normal - Call Team
+                </h3>
+                <ul class="space-y-3 text-red-900">
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span>Fever ≥100.4°F</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span>Breathing difficulty</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span>Confusion</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span>Seizure activity</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span>Severe abdominal pain</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span>Uncontrolled bleeding</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span>Cannot wake easily</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-red-600 font-bold">•</span>
+                        <span>Choking episodes</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. TREATMENT PHASE GUIDE -->
+    <div id="phases" class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">🧬 Treatment Phase Guide</h2>
+        
+        <!-- Induction -->
+        <div class="mb-8 bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
+            <h3 class="text-2xl font-bold text-red-900 mb-4">Induction (Weeks 1–4) ← CURRENT PHASE</h3>
+            <p class="text-gray-800 mb-4"><strong>Goal:</strong> Kill leukemia fast and achieve remission</p>
+            
+            <div class="mb-4">
+                <h4 class="font-bold text-gray-900 mb-2">What Parents Typically See:</h4>
+                <ul class="list-disc list-inside ml-4 text-gray-800">
+                    <li>Child looks worse before better</li>
+                    <li>Appetite huge (steroids) → then drops</li>
+                    <li>Counts fall despite treatment working</li>
+                    <li>Emotional rollercoaster</li>
+                    <li>Temporary regression in skills</li>
+                </ul>
+            </div>
+            
+            <div class="bg-white p-4 rounded-lg">
+                <h4 class="font-bold text-gray-900 mb-2">Expected Timeline:</h4>
+                <ul class="space-y-1 text-gray-800">
+                    <li><strong>Week 1:</strong> Steroids → energy + hunger</li>
+                    <li><strong>Week 2:</strong> Chemo effects begin</li>
+                    <li><strong>Week 2–3:</strong> Lowest blood counts (nadir)</li>
+                    <li><strong>Week 3–4:</strong> Recovery begins</li>
+                    <li><strong>Week 4:</strong> Bone marrow test to confirm remission</li>
+                </ul>
             </div>
         </div>
 
-        <!-- Category Filter -->
-        <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-            <select x-model="category" class="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-lg">
-                <option value="All">All Categories</option>
-                <option value="TreatmentPhase">Treatment Phases</option>
-                <option value="SideEffect">Side Effects</option>
-                <option value="LabValue">Lab Values</option>
-                <option value="Procedure">Procedures</option>
-                <option value="Recovery">Recovery</option>
-            </select>
+        <!-- Consolidation -->
+        <div class="mb-8 bg-orange-50 p-6 rounded-lg border-l-4 border-orange-500">
+            <h3 class="text-2xl font-bold text-orange-900 mb-4">Consolidation (Weeks 5–8)</h3>
+            <p class="text-gray-800 mb-4"><strong>Goal:</strong> Prevent resistant cells from surviving</p>
+            <ul class="list-disc list-inside ml-4 text-gray-800">
+                <li>Stronger chemo bursts</li>
+                <li>Predictable count drops</li>
+                <li>Hospital visits increase</li>
+                <li>Child may look sicker again</li>
+            </ul>
         </div>
 
-        <!-- Search -->
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
-            <input type="text" x-model="searchQuery" placeholder="Search articles..." 
-                class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+        <!-- Blinatumomab -->
+        <div class="mb-8 bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500">
+            <h3 class="text-2xl font-bold text-purple-900 mb-4">Blinatumomab (4 weeks, twice)</h3>
+            <p class="text-gray-800 mb-4"><strong>Goal:</strong> Use immune system to find remaining leukemia cells</p>
+            <ul class="list-disc list-inside ml-4 text-gray-800">
+                <li>Continuous IV infusion via pump</li>
+                <li>Hospital admission for first 1-3 days</li>
+                <li>Watch for fever, confusion, headaches</li>
+                <li>Most kids tolerate well after first days</li>
+            </ul>
+        </div>
+
+        <!-- Maintenance -->
+        <div class="mb-8 bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+            <h3 class="text-2xl font-bold text-green-900 mb-4">Maintenance (2+ years)</h3>
+            <p class="text-gray-800 mb-4"><strong>Goal:</strong> Keep leukemia from returning</p>
+            <p class="text-gray-800 font-bold mb-2">Big Psychological Shift:</p>
+            <ul class="list-disc list-inside ml-4 text-gray-800">
+                <li>Mostly home life</li>
+                <li>Daily oral chemo</li>
+                <li>Kids look normal again</li>
+                <li>Infection risk lower but still present</li>
+                <li>Monthly clinic visits</li>
+                <li>Return to school/activities</li>
+            </ul>
         </div>
     </div>
 
-    <!-- Articles Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @foreach(var article in Model.Articles)
-        {
-            <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition cursor-pointer"
-                @@click="$dispatch('open-article', @Html.Raw(System.Text.Json.JsonSerializer.Serialize(article)))">
-                <div class="flex items-start justify-between mb-3">
-                    <span class="text-xs font-semibold px-2 py-1 rounded bg-blue-100 text-blue-800">@article.Category</span>
-                    <span class="text-xs text-gray-500">@(article.IsAIGenerated ? "AI Generated" : "")</span>
+    <!-- 4. SYMPTOM DECODER -->
+    <div id="symptoms" class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">🔍 Symptom Decoder</h2>
+        
+        <div class="space-y-6">
+            <!-- Nausea -->
+            <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-blue-500">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">🤢 Nausea & Vomiting</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="font-bold text-gray-900 mb-2">Why it happens:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-700">
+                            <li>Chemo irritates gut lining</li>
+                            <li>Brain nausea center activation</li>
+                        </ul>
+                        <p class="font-bold text-gray-900 mt-3 mb-2">Typical timing:</p>
+                        <p class="text-gray-700">24–72h after chemo</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-900 mb-2">What helps:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-700">
+                            <li>Small, frequent meals</li>
+                            <li>Cold foods</li>
+                            <li>Anti-nausea meds on schedule</li>
+                            <li>Avoid strong smells</li>
+                        </ul>
+                        <p class="font-bold text-red-900 mt-3">Call if: Cannot keep fluids down</p>
+                    </div>
                 </div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-2">@article.Title</h3>
-                <p class="text-sm text-gray-600">@article.Summary</p>
             </div>
-        }
-    </div>
 
-    <!-- Empty State -->
-    @if(!Model.Articles.Any())
-    {
-        <div class="text-center py-12">
-            <p class="text-gray-500">No articles found.</p>
-        </div>
-    }
-
-    <!-- Article Modal -->
-    <div x-data="{ open: false, article: null }" 
-        @@open-article.window="open = true; article = $event.detail"
-        x-show="open" 
-        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
-        style="display: none;">
-        <div @@click.away="open = false" class="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto p-6">
-            <template x-if="article">
-                <div>
-                    <div class="flex justify-between items-start mb-4">
-                        <h2 class="text-2xl font-bold text-gray-900" x-text="article.title"></h2>
-                        <button @@click="open = false" class="text-gray-400 hover:text-gray-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
+            <!-- Voice Changes -->
+            <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-purple-500">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">🗣️ Voice Changes / Weak Speech</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="font-bold text-gray-900 mb-2">Cause:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-700">
+                            <li>Vincristine nerve effect</li>
+                            <li>Temporary vocal cord weakness</li>
+                            <li>Autonomic neuropathy</li>
+                        </ul>
+                        <p class="font-bold text-gray-900 mt-3 mb-2">Normal course:</p>
+                        <p class="text-gray-700">Appears 7–14 days after vincristine, improves gradually over weeks</p>
                     </div>
-                    <div class="mb-4">
-                        <span class="text-xs font-semibold px-2 py-1 rounded bg-blue-100 text-blue-800" 
-                            x-text="article.category"></span>
-                    </div>
-                    <div class="prose max-w-none">
-                        <p class="text-gray-700 whitespace-pre-line" x-text="article.content"></p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-200">
-                        <p class="text-xs text-amber-600">⚠️ This content is AI-generated for educational purposes. Always consult your medical team for personalized advice.</p>
+                    <div>
+                        <p class="font-bold text-green-900 mb-2">✅ Expected:</p>
+                        <ul class="list-disc list-inside ml-4 text-green-800">
+                            <li>Hoarse or weak voice</li>
+                            <li>Intermittent voice loss</li>
+                            <li>Gradual improvement</li>
+                        </ul>
+                        <p class="font-bold text-red-900 mt-3">Call if: Choking or breathing difficulty</p>
                     </div>
                 </div>
-            </template>
+            </div>
+
+            <!-- Low Hemoglobin -->
+            <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-red-500">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">🩸 Low Hemoglobin / Fatigue</h3>
+                <div class="bg-blue-50 p-4 rounded-lg mb-3">
+                    <p class="font-bold text-blue-900 mb-2">IMPORTANT TO UNDERSTAND:</p>
+                    <p class="text-blue-900">Hemoglobin drops even when leukemia is GONE from marrow because chemotherapy temporarily pauses normal blood production. This is expected and does NOT mean treatment isn't working.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="font-bold text-gray-900 mb-2">Why it happens:</p>
+                        <p class="text-gray-700">Chemo affects all rapidly dividing cells, including normal blood-making cells</p>
+                        <p class="font-bold text-gray-900 mt-3 mb-2">Typical timing:</p>
+                        <p class="text-gray-700">Lowest 10-14 days after chemo</p>
+                    </div>
+                    <div>
+                        <p class="font-bold text-gray-900 mb-2">What you'll see:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-700">
+                            <li>Pale skin</li>
+                            <li>Fatigue</li>
+                            <li>Less active</li>
+                            <li>May need transfusion</li>
+                        </ul>
+                        <p class="font-bold text-green-900 mt-3">Recovery: Counts rise again after nadir</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fatigue -->
+            <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-yellow-500">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">😴 Sudden Fatigue</h3>
+                <p class="text-gray-700 mb-2"><strong>Most common after:</strong> Chemo days, especially daunorubicin</p>
+                <p class="text-green-800 font-bold">✅ Expected: Child sleeps more, less playful for 2-3 days</p>
+                <p class="text-red-900 font-bold mt-2">🚨 Call if: Cannot wake easily or unresponsive</p>
+            </div>
+
+            <!-- Constipation -->
+            <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-orange-500">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">💩 Constipation</h3>
+                <p class="text-gray-700 mb-2"><strong>Cause:</strong> Vincristine affects nerve signals to intestines</p>
+                <p class="text-gray-700 mb-2"><strong>Prevention:</strong> Stool softeners, fluids, fiber</p>
+                <p class="text-red-900 font-bold">Call if: No bowel movement for 3+ days or severe pain</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. LABS EXPLAINED -->
+    <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">🧪 Labs Explained - CBC Cheat Sheet</h2>
+        
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white border-2 border-gray-300">
+                <thead class="bg-blue-600 text-white">
+                    <tr>
+                        <th class="px-6 py-3 text-left">Lab</th>
+                        <th class="px-6 py-3 text-left">What It Means</th>
+                        <th class="px-6 py-3 text-left">When Low</th>
+                        <th class="px-6 py-3 text-left">Normal Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b">
+                        <td class="px-6 py-4 font-bold">ANC</td>
+                        <td class="px-6 py-4">Infection fighters (neutrophils)</td>
+                        <td class="px-6 py-4 text-red-700">High infection risk</td>
+                        <td class="px-6 py-4">1500-8000</td>
+                    </tr>
+                    <tr class="border-b bg-gray-50">
+                        <td class="px-6 py-4 font-bold">Hemoglobin</td>
+                        <td class="px-6 py-4">Oxygen carrying (red blood cells)</td>
+                        <td class="px-6 py-4 text-red-700">Fatigue, pale skin</td>
+                        <td class="px-6 py-4">11-14 g/dL</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="px-6 py-4 font-bold">Platelets</td>
+                        <td class="px-6 py-4">Clotting cells</td>
+                        <td class="px-6 py-4 text-red-700">Bruising, bleeding risk</td>
+                        <td class="px-6 py-4">150,000-400,000</td>
+                    </tr>
+                    <tr class="bg-gray-50">
+                        <td class="px-6 py-4 font-bold">WBC</td>
+                        <td class="px-6 py-4">Total white blood cells</td>
+                        <td class="px-6 py-4 text-red-700">Infection risk</td>
+                        <td class="px-6 py-4">5,000-15,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-6 bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+            <h3 class="text-xl font-bold text-blue-900 mb-3">Expected Pattern During Induction:</h3>
+            <ul class="space-y-2 text-blue-900">
+                <li><strong>Week 1-2:</strong> Counts may look OK</li>
+                <li><strong>Week 2-4:</strong> Expected drop (chemo effect) ← This is NORMAL</li>
+                <li><strong>Week 4+:</strong> Recovery begins</li>
+            </ul>
+            <p class="text-blue-900 font-bold mt-4">⚠️ Counts dropping = Treatment working, NOT failing</p>
+        </div>
+    </div>
+
+    <!-- 6. QUESTIONS TO ASK YOUR DOCTOR -->
+    <div class="bg-purple-50 rounded-lg p-8 mb-8 border-2 border-purple-500">
+        <h2 class="text-3xl font-bold text-purple-900 mb-6">💬 Questions To Ask Your Doctor</h2>
+        
+        <div class="space-y-6">
+            <div>
+                <h3 class="text-xl font-bold text-purple-900 mb-3">At Each Visit Ask:</h3>
+                <ul class="list-disc list-inside ml-4 space-y-2 text-purple-900">
+                    <li>Are we at expected count timing for this phase?</li>
+                    <li>Is this symptom drug-related or infection-related?</li>
+                    <li>What is the next expected difficult period?</li>
+                    <li>When should energy improve?</li>
+                    <li>What should I watch for this week?</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold text-purple-900 mb-3">After Chemo Ask:</h3>
+                <ul class="list-disc list-inside ml-4 space-y-2 text-purple-900">
+                    <li>When will nadir (lowest counts) occur?</li>
+                    <li>What symptoms peak this week?</li>
+                    <li>When can we expect recovery?</li>
+                    <li>Any activity restrictions?</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold text-purple-900 mb-3">About Results Ask:</h3>
+                <ul class="list-disc list-inside ml-4 space-y-2 text-purple-900">
+                    <li>Is this response typical for this timeline?</li>
+                    <li>What does MRD result mean for long-term?</li>
+                    <li>Are we on track with the protocol?</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. DAY-TO-DAY LIVING GUIDE -->
+    <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">🏠 Day-to-Day Living Guide</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Visitors -->
+            <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500">
+                <h3 class="text-xl font-bold text-blue-900 mb-3">👥 Visitors & Social Contact</h3>
+                <div class="space-y-2 text-gray-800">
+                    <p><strong>✅ Safe:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Healthy immediate family</li>
+                        <li>Small groups of healthy people</li>
+                        <li>Outdoor visits (better ventilation)</li>
+                    </ul>
+                    <p class="mt-3"><strong>❌ Avoid:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Anyone with cold/flu symptoms</li>
+                        <li>Recently vaccinated with live vaccines</li>
+                        <li>Large crowds during low counts</li>
+                        <li>Sick children from school/daycare</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- School/Daycare -->
+            <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+                <h3 class="text-xl font-bold text-green-900 mb-3">🏫 School & Daycare</h3>
+                <div class="space-y-2 text-gray-800">
+                    <p><strong>During Intensive Treatment:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Home-based learning</li>
+                        <li>Hospital school programs</li>
+                        <li>Virtual connections with classmates</li>
+                    </ul>
+                    <p class="mt-3"><strong>During Maintenance:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Can often return to school</li>
+                        <li>Notify school nurse about treatment</li>
+                        <li>Stay home if classmates are sick</li>
+                        <li>Mask during flu season (optional)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Safe Foods -->
+            <div class="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500">
+                <h3 class="text-xl font-bold text-yellow-900 mb-3">🍎 Safe Foods</h3>
+                <div class="space-y-2 text-gray-800">
+                    <p><strong>✅ Safe:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Well-cooked meats</li>
+                        <li>Pasteurized dairy</li>
+                        <li>Washed fruits (peel if possible)</li>
+                        <li>Cooked vegetables</li>
+                        <li>Packaged/processed foods</li>
+                    </ul>
+                    <p class="mt-3"><strong>❌ Avoid During Low Counts:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Raw/undercooked meat</li>
+                        <li>Unpasteurized dairy/juice</li>
+                        <li>Raw honey</li>
+                        <li>Deli meats (unless heated)</li>
+                        <li>Buffets/salad bars</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pets -->
+            <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500">
+                <h3 class="text-xl font-bold text-purple-900 mb-3">🐕 Pet Interaction</h3>
+                <div class="space-y-2 text-gray-800">
+                    <p><strong>✅ Generally Safe:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Petting and cuddling pets</li>
+                        <li>Indoor cats and dogs</li>
+                        <li>Fish tanks (with help cleaning)</li>
+                    </ul>
+                    <p class="mt-3"><strong>⚠️ Precautions:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Wash hands after touching pets</li>
+                        <li>Avoid litter boxes (toxoplasmosis risk)</li>
+                        <li>Keep pets' vaccines current</li>
+                        <li>Avoid reptiles/amphibians (salmonella)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Travel -->
+            <div class="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-500">
+                <h3 class="text-xl font-bold text-orange-900 mb-3">✈️ Travel Timing</h3>
+                <div class="space-y-2 text-gray-800">
+                    <p><strong>During Intensive Treatment:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Stay close to hospital</li>
+                        <li>Short local trips OK if counts good</li>
+                        <li>Always have oncology contact info</li>
+                    </ul>
+                    <p class="mt-3"><strong>During Maintenance:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Can travel with team approval</li>
+                        <li>Avoid areas with disease outbreaks</li>
+                        <li>Bring medication and medical records</li>
+                        <li>Know nearest pediatric hospital</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Vaccines -->
+            <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
+                <h3 class="text-xl font-bold text-red-900 mb-3">💉 Vaccines During Treatment</h3>
+                <div class="space-y-2 text-gray-800">
+                    <p><strong>❌ NO Live Vaccines:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>MMR (measles, mumps, rubella)</li>
+                        <li>Varicella (chickenpox)</li>
+                        <li>Nasal flu vaccine</li>
+                        <li>Rotavirus</li>
+                    </ul>
+                    <p class="mt-3"><strong>✅ Inactivated Vaccines OK:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Flu shot (injectable)</li>
+                        <li>COVID vaccine (discuss timing)</li>
+                    </ul>
+                    <p class="mt-3 font-bold text-red-900">⚠️ Family members should get flu shots and stay current on vaccines</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. WHAT A GOOD COURSE LOOKS LIKE -->
+    <div class="bg-green-50 rounded-lg p-8 border-2 border-green-500">
+        <h2 class="text-3xl font-bold text-green-900 mb-6">⭐ What A Good Course Looks Like</h2>
+        
+        <div class="space-y-4">
+            <div class="bg-white p-4 rounded-lg">
+                <h3 class="font-bold text-green-900 mb-2">Early Weeks (1-6):</h3>
+                <p class="text-gray-800">Child looks sick, counts drop, temporary regression. <span class="font-bold">This is expected.</span></p>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg">
+                <h3 class="font-bold text-green-900 mb-2">Weeks 3-6:</h3>
+                <p class="text-gray-800">Noticeable improvement in energy, walking, eating. Voice may still be weak.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg">
+                <h3 class="font-bold text-green-900 mb-2">Months 2-3:</h3>
+                <p class="text-gray-800">More normal behavior between treatments. Personality returns.</p>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg">
+                <h3 class="font-bold text-green-900 mb-2">Maintenance Phase:</h3>
+                <p class="text-gray-800">Near normal childhood. Daily oral chemo at home. Monthly clinic visits.</p>
+            </div>
+
+            <div class="bg-green-100 p-4 rounded-lg border-2 border-green-600 mt-6">
+                <p class="text-green-900 font-bold text-lg">Based on your daughter's course so far:</p>
+                <ul class="list-disc list-inside ml-4 mt-2 text-green-900">
+                    <li>✅ Rapid CSF clearance (excellent)</li>
+                    <li>✅ No systemic disease detected</li>
+                    <li>✅ Strong platelet recovery</li>
+                    <li>✅ Rapid neurologic recovery (walking, eating)</li>
+                    <li>✅ Good treatment tolerance</li>
+                </ul>
+                <p class="text-green-900 font-bold mt-4">This fits a very favorable early-response pattern.</p>
+            </div>
         </div>
     </div>
 
